@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply box-border;
+}
+
+body {
+  @apply bg-app font-sans text-ink antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-display;
+}
+
+/* Safe area insets for notched devices */
+.safe-top    { padding-top: env(safe-area-inset-top, 0px); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+/* Hide scrollbars while keeping scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* Smooth scrolling for the app shell */
+html { scroll-behavior: smooth; }
+
+/* Tap highlight on mobile */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Phone frame desktop background */
+.frame-bg {
+  background-color: #CDD8CA;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(200,90,58,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(107,165,135,0.10) 0%, transparent 50%);
+}

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <!-- Ambit mark: navy + green "A" with orbit dot (vector recreation of brand logo) -->
+  <!-- Left leg: navy -->
+  <path d="M25 106 L57 22" stroke="#16283D" stroke-width="26" stroke-linecap="round" />
+  <!-- Right leg: green -->
+  <path d="M66 40 L88 106" stroke="#36754D" stroke-width="24" stroke-linecap="round" />
+  <!-- Crossbar swirl: green -->
+  <path
+    d="M36 72 C58 88 82 66 76 44"
+    stroke="#36754D"
+    stroke-width="15"
+    fill="none"
+    stroke-linecap="round"
+  />
+  <!-- Orbit dot -->
+  <circle cx="97" cy="26" r="11" fill="#36754D" />
+</svg>
