@@ -117,7 +117,7 @@ export default function HomePage() {
                       <Link
                         key={circle.id}
                         to={`/circles/${circle.id}`}
-                        className="relative shrink-0 w-44 h-28 snap-start overflow-hidden rounded-card bg-gradient-to-br from-navy-900 to-primary-700 p-4 shadow-card flex flex-col justify-between"
+                        className="relative shrink-0 w-44 h-32 snap-start overflow-hidden rounded-card bg-gradient-to-br from-navy-900 to-primary-700 p-4 shadow-card flex flex-col justify-between"
                       >
                         <div className="text-2xl">{style.icon}</div>
                         <div>

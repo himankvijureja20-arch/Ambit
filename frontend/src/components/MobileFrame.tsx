@@ -83,6 +83,7 @@ export default function MobileFrame({ children }: MobileFrameProps) {
            * This is the single scroll container for all page content.
            */}
           <div
+            className="scrollbar-hide"
             style={{
               position: 'absolute',
               top: 44,

@@ -23,7 +23,7 @@ export default function AppLayout({
        * On desktop (inside the phone frame): no overflow — the MobileFrame's
        * content area is the single scroll container; this just expands freely.
        */}
-      <main className="flex-1 overflow-y-auto sm:overflow-visible pb-28">
+      <main className="flex-1 overflow-y-auto sm:overflow-visible pb-28 scrollbar-hide">
         <div className="mx-auto max-w-mobile px-5 py-6">
           {children}
         </div>
