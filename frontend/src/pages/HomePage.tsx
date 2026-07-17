@@ -110,7 +110,7 @@ export default function HomePage() {
                   </Link>
                 </Card>
               ) : (
-                <div className="flex gap-3 overflow-x-auto pb-1 -mx-5 px-5 snap-x">
+                <div className="flex gap-3 overflow-x-auto -mx-5 px-5 snap-x [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
                   {yourCircles.map((circle) => {
                     const style = getCategoryStyle(circle.category);
                     return (
@@ -120,10 +120,12 @@ export default function HomePage() {
                         className="relative shrink-0 w-44 h-28 snap-start overflow-hidden rounded-card bg-gradient-to-br from-navy-900 to-primary-700 p-4 shadow-card flex flex-col justify-between"
                       >
                         <div className="text-2xl">{style.icon}</div>
-                        <p className="mt-2 font-display font-semibold text-white leading-snug">
-                          {circle.name}
-                        </p>
-                        <p className="mt-1 text-xs text-white/70">{circle.member_count} neighbors</p>
+                        <div>
+                          <p className="font-display font-semibold text-white leading-snug line-clamp-2">
+                            {circle.name}
+                          </p>
+                          <p className="mt-0.5 text-xs text-white/70">{circle.member_count} neighbors</p>
+                        </div>
                       </Link>
                     );
                   })}
