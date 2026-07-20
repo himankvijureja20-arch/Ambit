@@ -3,6 +3,12 @@ import bcryptjs from 'bcryptjs';
 
 async function seed() {
   try {
+    const { rows: [{ count }] } = await db.query('SELECT COUNT(*) FROM societies');
+    if (parseInt(count) > 0) {
+      console.log('Seed data already exists — skipping.');
+      process.exit(0);
+    }
+
     await db.query(
       'TRUNCATE societies, users, circles, circle_members, interests, requests, request_responses CASCADE'
     );
