@@ -110,25 +110,29 @@ export default function HomePage() {
                   </Link>
                 </Card>
               ) : (
-                <div className="flex gap-3 overflow-x-auto -mx-5 px-5 snap-x [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
-                  {yourCircles.map((circle) => {
-                    const style = getCategoryStyle(circle.category);
-                    return (
-                      <Link
-                        key={circle.id}
-                        to={`/circles/${circle.id}`}
-                        className="relative shrink-0 w-44 h-32 snap-start overflow-hidden rounded-card bg-gradient-to-br from-navy-900 to-primary-700 p-4 shadow-card flex flex-col justify-between"
-                      >
-                        <div className="text-2xl">{style.icon}</div>
-                        <div>
-                          <p className="font-display font-semibold text-white leading-snug line-clamp-2">
-                            {circle.name}
-                          </p>
-                          <p className="mt-0.5 text-xs text-white/70">{circle.member_count} neighbors</p>
-                        </div>
-                      </Link>
-                    );
-                  })}
+                <div className="relative -mx-5">
+                  <div className="flex gap-3 overflow-x-auto px-5 snap-x snap-mandatory scroll-pl-5 scroll-smooth [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
+                    {yourCircles.map((circle) => {
+                      const style = getCategoryStyle(circle.category);
+                      return (
+                        <Link
+                          key={circle.id}
+                          to={`/circles/${circle.id}`}
+                          className="relative shrink-0 w-44 h-32 snap-start overflow-hidden rounded-[16px] bg-gradient-to-br from-navy-950 to-primary-600 p-4 shadow-raised flex flex-col justify-between"
+                        >
+                          <div className="text-2xl">{style.icon}</div>
+                          <div>
+                            <p className="font-display font-semibold text-white leading-snug line-clamp-2">
+                              {circle.name}
+                            </p>
+                            <p className="mt-0.5 text-xs text-white/60">{circle.member_count} neighbors</p>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                    <div className="shrink-0 w-5" aria-hidden />
+                  </div>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-app to-transparent" />
                 </div>
               )}
             </div>

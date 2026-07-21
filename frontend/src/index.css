@@ -36,10 +36,41 @@ html { scroll-behavior: smooth; }
 /* Tap highlight on mobile */
 * { -webkit-tap-highlight-color: transparent; }
 
+/*
+ * Phone frame (desktop ≥640px only).
+ * Below sm these classes apply nothing, so the app renders in normal
+ * full-screen flow on real devices — one DOM, no duplicate mounts.
+ */
+@media (min-width: 640px) {
+  .phone-frame {
+    width: 375px;
+    height: 812px;
+    border-radius: 50px;
+    border: 10px solid #1E1B4B;
+    background: #F8F7FF;
+    overflow: hidden;
+    box-shadow:
+      0 30px 60px rgba(30, 27, 75, 0.4),
+      0 0 0 1px rgba(30, 27, 75, 0.1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    /* traps position:fixed descendants (bottom nav) inside the frame */
+    transform: translateZ(0);
+  }
+  .phone-screen {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
 /* Phone frame desktop background */
 .frame-bg {
-  background-color: #CDD8CA;
+  background-color: #E3E0FB;
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(200,90,58,0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(107,165,135,0.10) 0%, transparent 50%);
+    radial-gradient(circle at 15% 15%, rgba(99,102,241,0.22) 0%, transparent 55%),
+    radial-gradient(circle at 85% 85%, rgba(245,158,11,0.16) 0%, transparent 55%);
 }

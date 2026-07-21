@@ -4,72 +4,72 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Brand — Warm Terracotta (CTAs, highlights)
+        // Brand — Electric Indigo
         primary: {
-          50: '#FAF0ED',
-          100: '#F3D5CB',
-          500: '#C85A3A',
-          600: '#B04E31',
-          700: '#8D3D26',
-          DEFAULT: '#C85A3A',
+          50: '#EEF2FF',
+          100: '#E0E7FF',
+          500: '#6366F1',
+          600: '#4F46E5',
+          700: '#4338CA',
+          DEFAULT: '#4F46E5',
         },
-        // Dark backgrounds — Deep Charcoal (forest-green-charcoal)
+        // Dark backgrounds — Deep Midnight Indigo
         navy: {
-          950: '#1F2E28',
-          900: '#2D3A34',
-          800: '#3D4E46',
-          DEFAULT: '#2D3A34',
+          950: '#1E1B4B',
+          900: '#312E81',
+          800: '#3730A3',
+          DEFAULT: '#312E81',
         },
         // Surfaces & text
-        app: '#F1F5F0',        // Soft Sage Green background
+        app: '#F8F7FF',        // Lavender-tinted white
         surface: '#FFFFFF',
         ink: {
-          DEFAULT: '#2D3A34',  // Deep Charcoal
-          secondary: '#556B60',
-          tertiary: '#8BA098',
+          DEFAULT: '#1A1635',  // Near-black with indigo undertone
+          secondary: '#4B4869',
+          tertiary: '#8B87A8',
         },
         line: {
-          DEFAULT: '#A8B5A3',  // Neutral Medium
-          subtle: '#E8ECE7',   // Pale Sage
+          DEFAULT: '#C4B5FD',  // Violet-300 — subtle purple borders
+          subtle: '#EDE9FE',   // Violet-100 — very light dividers
         },
         // Status / trust
         sage: {
-          bg: '#DCF0E7',       // Light mint — verified badges
-          text: '#2D5E4A',
-          deep: '#1F3D2E',
+          bg: '#D1FAE5',
+          text: '#065F46',
+          deep: '#022C22',
         },
-        // Secondary accent — Muted Olive
+        // Secondary accent — Warm Lavender
         olive: {
-          DEFAULT: '#8B9D6B',
-          dark: '#6B7D50',
+          DEFAULT: '#A78BFA',
+          dark: '#7C3AED',
         },
         // Success / trust indicator
         success: {
-          DEFAULT: '#6BA587',
-          bg: '#E4F4EC',
-          text: '#1F5C3E',
+          DEFAULT: '#10B981',
+          bg: '#D1FAE5',
+          text: '#065F46',
         },
-        // Links & secondary interactive (Terracotta-family for consistency)
+        // Amber — warmth & celebration accent
         sky: {
-          50: '#FAF0ED',
-          500: '#C85A3A',
-          600: '#B04E31',
-          700: '#8D3D26',
-          DEFAULT: '#C85A3A',
+          50: '#EEF2FF',
+          500: '#6366F1',
+          600: '#4F46E5',
+          700: '#4338CA',
+          DEFAULT: '#4F46E5',
         },
         amber: {
-          DEFAULT: '#FFBF00',
+          DEFAULT: '#F59E0B',
           bg: '#FEF3C7',
           text: '#92400E',
         },
         danger: {
-          DEFAULT: '#BA1A1A',
-          bg: '#FFDAD6',
+          DEFAULT: '#EF4444',
+          bg: '#FEE2E2',
         },
         info: {
-          bg: '#E8ECE7',
-          soft: '#DCF0E7',
-          text: '#2D5E4A',
+          bg: '#EDE9FE',
+          soft: '#DDD6FE',
+          text: '#4C1D95',
         },
       },
       fontFamily: {
@@ -81,10 +81,10 @@ export default {
         phone: '44px',
       },
       boxShadow: {
-        card: '0 1px 3px rgba(45, 58, 52, 0.08), 0 1px 2px rgba(45, 58, 52, 0.06)',
-        cta: '0 4px 6px -1px rgba(200, 90, 58, 0.25), 0 2px 4px -2px rgba(200, 90, 58, 0.15)',
-        raised: '0 10px 15px -3px rgba(45, 58, 52, 0.12), 0 4px 6px -4px rgba(45, 58, 52, 0.08)',
-        phone: '0 30px 60px rgba(31, 46, 40, 0.45), 0 0 0 1px rgba(31, 46, 40, 0.15)',
+        card: '0 1px 3px rgba(79, 70, 229, 0.08), 0 1px 2px rgba(79, 70, 229, 0.05)',
+        cta: '0 4px 14px -2px rgba(79, 70, 229, 0.4), 0 2px 6px -2px rgba(79, 70, 229, 0.2)',
+        raised: '0 10px 24px -4px rgba(79, 70, 229, 0.15), 0 4px 8px -4px rgba(79, 70, 229, 0.1)',
+        phone: '0 30px 60px rgba(30, 27, 75, 0.45), 0 0 0 1px rgba(30, 27, 75, 0.15)',
       },
       maxWidth: {
         mobile: '448px',
