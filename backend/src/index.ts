@@ -48,8 +48,21 @@ app.get('/health', (_req, res) => {
 if (isProd) {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const frontendDist = path.join(__dirname, '../../frontend/dist');
-  app.use(express.static(frontendDist));
+  app.use(
+    express.static(frontendDist, {
+      setHeaders: (res, filePath) => {
+        // Vite content-hashes files under assets/ — cache those forever;
+        // everything else (index.html) must revalidate so new deploys show up.
+        if (filePath.includes(`${path.sep}assets${path.sep}`)) {
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        } else {
+          res.setHeader('Cache-Control', 'no-cache');
+        }
+      },
+    })
+  );
   app.get('*', (_req, res) => {
+    res.setHeader('Cache-Control', 'no-cache');
     res.sendFile(path.join(frontendDist, 'index.html'));
   });
 } else {
