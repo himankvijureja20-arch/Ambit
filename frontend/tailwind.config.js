@@ -29,8 +29,8 @@ export default {
           tertiary: '#8B87A8',
         },
         line: {
-          DEFAULT: '#C4B5FD',  // Violet-300 — subtle purple borders
-          subtle: '#EDE9FE',   // Violet-100 — very light dividers
+          DEFAULT: '#DDD6FE',  // Violet-200 — input & control borders
+          subtle: '#F1EFFB',   // Near-invisible card borders / dividers
         },
         // Status / trust
         sage: {

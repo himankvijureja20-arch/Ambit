@@ -120,10 +120,6 @@ export default function ProfilePage() {
       <div className="space-y-6">
         <Card className="overflow-hidden">
           <div className="relative bg-gradient-to-br from-primary-700 to-navy-950 px-6 pb-8 pt-6">
-            <div
-              className="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-white/10 blur-2xl"
-              aria-hidden
-            />
             <div className="relative flex items-center gap-4">
               <Avatar
                 initials={`${userProfile.first_name[0]}${userProfile.last_name[0]}`}

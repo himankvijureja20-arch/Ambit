@@ -3,9 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 import { circles, requests, getErrorMessage } from '../api/client';
 import { useAuthStore } from '../store/authStore';
 import AppLayout from '../layouts/AppLayout';
-import { Button, Card, Badge, Avatar, SectionHeader } from '../components/ui';
+import { Button, Card, Avatar, SectionHeader } from '../components/ui';
 import { CircleDetail, RequestSummary } from '../types';
 import { getCategoryStyle } from '../lib/category';
+import { URGENCY_SHORT_LABELS, URGENCY_DOT } from '../lib/requestCategory';
 
 export default function CircleDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -115,12 +116,8 @@ export default function CircleDetailPage() {
           </div>
         )}
 
-        <div className="relative overflow-hidden rounded-card bg-gradient-to-br from-navy-950 to-primary-700 p-6 shadow-raised">
-          <div
-            className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/10 blur-2xl"
-            aria-hidden
-          />
-          <div className="relative flex items-center gap-4">
+        <div className="rounded-card bg-gradient-to-br from-navy-950 to-primary-700 p-6 shadow-raised">
+          <div className="flex items-center gap-4">
             <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/15 text-2xl">
               {getCategoryStyle(circle.category).icon}
             </div>
@@ -188,37 +185,27 @@ export default function CircleDetailPage() {
               <div className="space-y-3">
                 {circleRequests.map((request) => (
                   <Link key={request.id} to={`/requests/${request.id}`}>
-                    <Card
-                      className={`p-5 transition-all hover:shadow-raised hover:-translate-y-0.5 cursor-pointer border-l-4 ${
-                        request.urgency === 'urgent'
-                          ? 'border-l-danger'
-                          : request.urgency === 'high'
-                            ? 'border-l-amber'
-                            : 'border-l-sky-500/40'
-                      }`}
-                    >
-                      <div className="flex items-start justify-between gap-3 mb-2">
-                        <h4 className="font-display font-semibold text-navy-950 flex-1">
-                          {request.urgency === 'urgent' ? '🔥 ' : request.urgency === 'high' ? '⚡ ' : ''}
+                    <Card className="p-4 transition-shadow hover:shadow-raised cursor-pointer">
+                      <div className="flex items-start justify-between gap-3">
+                        <h4 className="font-display font-semibold text-navy-950 leading-snug flex-1">
                           {request.title}
                         </h4>
-                        <Badge
-                          status={
-                            request.urgency === 'urgent'
-                              ? 'urgent'
-                              : request.urgency === 'high'
-                                ? 'priority'
-                                : request.status === 'open'
-                                  ? 'active'
-                                  : 'verified'
-                          }
-                          className="shrink-0"
-                        >
-                          {request.status === 'open' ? request.urgency : request.status}
-                        </Badge>
+                        {request.status === 'open' ? (
+                          <span className="flex shrink-0 items-center gap-1.5 pt-0.5 text-xs font-medium text-ink-secondary">
+                            <span
+                              className={`h-1.5 w-1.5 rounded-full ${URGENCY_DOT[request.urgency]}`}
+                              aria-hidden
+                            />
+                            {URGENCY_SHORT_LABELS[request.urgency]}
+                          </span>
+                        ) : (
+                          <span className="shrink-0 pt-0.5 text-xs font-medium capitalize text-ink-tertiary">
+                            {request.status}
+                          </span>
+                        )}
                       </div>
-                      <p className="text-sm text-ink-secondary mb-3">{request.description}</p>
-                      <div className="flex items-center justify-between text-xs text-ink-tertiary">
+                      <p className="mt-1 text-sm text-ink-secondary line-clamp-2">{request.description}</p>
+                      <div className="mt-2.5 flex items-center justify-between text-xs text-ink-tertiary">
                         <span>
                           By {request.first_name} {request.last_name}
                         </span>

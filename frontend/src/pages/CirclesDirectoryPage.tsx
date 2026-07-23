@@ -90,7 +90,7 @@ export default function CirclesDirectoryPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Find a circle (e.g. Yoga, Security, Tech)..."
-            className="w-full rounded-lg border-2 border-line bg-surface py-2.5 pl-11 pr-4 text-sm text-ink placeholder-ink-tertiary focus:border-sky-500 focus:outline-none"
+            className="w-full rounded-lg border border-line bg-surface py-2.5 pl-11 pr-4 text-sm text-ink placeholder-ink-tertiary focus:border-primary focus:outline-none"
           />
         </div>
 
@@ -132,7 +132,7 @@ export default function CirclesDirectoryPage() {
                 >
                   <Link to={`/circles/${circle.id}`} className="block">
                     <div className="flex items-start gap-4">
-                      <IconTile icon={style.icon} color={style.color} size="md" />
+                      <IconTile icon={style.icon} color="neutral" size="md" />
                       <div className="flex-1 space-y-2">
                         <div className="flex items-start justify-between gap-2">
                           <h3 className="font-display font-semibold text-navy-950">

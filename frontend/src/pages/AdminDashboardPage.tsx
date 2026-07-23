@@ -61,10 +61,9 @@ export default function AdminDashboardPage() {
   return (
     <AppLayout title="Admin">
       <div className="space-y-6">
-        <div className="relative overflow-hidden rounded-card bg-gradient-to-br from-navy-950 to-primary-700 p-6 shadow-raised">
-          <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/10 blur-2xl" aria-hidden />
-          <p className="relative font-display text-lg font-bold text-white">Society Overview</p>
-          <p className="relative mt-1 text-sm text-white/75">
+        <div className="rounded-card bg-gradient-to-br from-navy-950 to-primary-700 p-6 shadow-raised">
+          <p className="font-display text-lg font-bold text-white">Society Overview</p>
+          <p className="mt-1 text-sm text-white/75">
             Manage your community — approvals, circles, and content.
           </p>
         </div>

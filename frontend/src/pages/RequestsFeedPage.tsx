@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { requests, getErrorMessage } from '../api/client';
 import AppLayout from '../layouts/AppLayout';
-import { Card, Badge, SegmentedControl, IconTile, RequestCardSkeleton } from '../components/ui';
+import { Card, SegmentedControl, IconTile, RequestCardSkeleton } from '../components/ui';
 import { RequestSummary } from '../types';
-import { getRequestCategoryStyle, URGENCY_SHORT_LABELS } from '../lib/requestCategory';
+import { getRequestCategoryStyle, URGENCY_SHORT_LABELS, URGENCY_DOT } from '../lib/requestCategory';
 import { timeAgo } from '../lib/timeAgo';
 
 export default function RequestsFeedPage() {
@@ -41,21 +41,15 @@ export default function RequestsFeedPage() {
       }
     >
       <div className="space-y-6">
-        <div className="relative overflow-hidden rounded-card bg-gradient-to-br from-primary-700 to-navy-950 p-6 shadow-raised">
-          <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/10 blur-2xl" aria-hidden />
-          <p className="relative font-display text-xl font-bold text-white">
-            How can your neighbors help?
-          </p>
-          <p className="relative mt-1.5 text-sm text-white/80">
-            One-off asks, visible to your whole society or just one Circle.
-          </p>
+        <Card className="flex items-center justify-between gap-3 p-4">
+          <p className="text-sm text-ink-secondary">Need a hand from a neighbor?</p>
           <Link
             to="/requests/new"
-            className="relative mt-4 inline-flex items-center gap-1 rounded-full bg-white px-4 py-2 text-sm font-semibold text-navy-950"
+            className="shrink-0 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white shadow-cta hover:bg-primary-600 transition-colors"
           >
-            + Post a Request
+            Post a Request
           </Link>
-        </div>
+        </Card>
 
         {error && (
           <div className="rounded-lg bg-danger-bg p-4 text-sm font-semibold text-danger">{error}</div>
@@ -96,38 +90,33 @@ export default function RequestsFeedPage() {
                   className="block animate-fadeIn"
                   style={{ animationDelay: `${i * 40}ms` }}
                 >
-                  <Card
-                    className={`p-5 transition-all hover:shadow-raised hover:-translate-y-0.5 border-l-4 ${
-                      request.urgency === 'urgent'
-                        ? 'border-l-danger'
-                        : request.urgency === 'high'
-                          ? 'border-l-amber'
-                          : 'border-l-sky-500/40'
-                    }`}
-                  >
-                    <div className="flex items-start gap-4">
-                      <IconTile icon={style.icon} color={style.color} size="md" />
-                      <div className="flex-1 space-y-1.5">
-                        <div className="flex items-start justify-between gap-2">
-                          <h3 className="font-display font-semibold text-navy-950 leading-snug">
+                  <Card className="p-4 transition-shadow hover:shadow-raised">
+                    <div className="flex items-start gap-3.5">
+                      <IconTile icon={style.icon} color="neutral" size="sm" />
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-start justify-between gap-3">
+                          <h3 className="font-display font-semibold text-navy-950 leading-snug line-clamp-2">
                             {request.title}
                           </h3>
-                          <span className="shrink-0 text-xs text-ink-tertiary">
+                          <span className="shrink-0 pt-0.5 text-xs text-ink-tertiary">
                             {timeAgo(request.created_at)}
                           </span>
                         </div>
-                        <p className="text-sm text-ink-secondary line-clamp-2">{request.description}</p>
-                        <div className="flex items-center justify-between pt-1">
-                          <span className="text-xs text-ink-tertiary">
+                        <p className="mt-1 text-sm text-ink-secondary line-clamp-2">
+                          {request.description}
+                        </p>
+                        <div className="mt-2.5 flex items-center justify-between gap-2">
+                          <span className="truncate text-xs text-ink-tertiary">
                             {request.first_name} {request.last_name}
                             {request.circle_name ? ` · ${request.circle_name}` : ' · Society-wide'}
                           </span>
-                          <Badge
-                            status={request.urgency === 'urgent' ? 'urgent' : 'active'}
-                            className="shrink-0"
-                          >
+                          <span className="flex shrink-0 items-center gap-1.5 text-xs font-medium text-ink-secondary">
+                            <span
+                              className={`h-1.5 w-1.5 rounded-full ${URGENCY_DOT[request.urgency]}`}
+                              aria-hidden
+                            />
                             {URGENCY_SHORT_LABELS[request.urgency]}
-                          </Badge>
+                          </span>
                         </div>
                       </div>
                     </div>

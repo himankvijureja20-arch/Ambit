@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { circles, requests, profile, getErrorMessage } from '../api/client';
 import { useAuthStore } from '../store/authStore';
 import AppLayout from '../layouts/AppLayout';
-import { Card, Badge, SectionHeader, IconTile, Avatar, CircleCardSkeleton } from '../components/ui';
+import { Card, SectionHeader, IconTile, Avatar, CircleCardSkeleton } from '../components/ui';
 import { CircleSummary, RequestSummary, TopHelper } from '../types';
 import { getCategoryStyle } from '../lib/category';
-import { getRequestCategoryStyle, URGENCY_SHORT_LABELS } from '../lib/requestCategory';
+import { getRequestCategoryStyle, URGENCY_SHORT_LABELS, URGENCY_DOT } from '../lib/requestCategory';
 
 export default function HomePage() {
   const [circlesList, setCirclesList] = useState<CircleSummary[]>([]);
@@ -43,19 +43,11 @@ export default function HomePage() {
   return (
     <AppLayout title="Home">
       <div className="space-y-8">
-        <div className="relative overflow-hidden rounded-card bg-gradient-to-br from-navy-950 via-navy-900 to-primary-700 p-6 shadow-raised">
-          <div
-            className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/40 blur-2xl"
-            aria-hidden
-          />
-          <div
-            className="absolute -bottom-12 -left-8 h-32 w-32 rounded-full bg-olive/20 blur-2xl"
-            aria-hidden
-          />
-          <p className="relative font-display text-xl font-bold text-white">
+        <div className="rounded-card bg-gradient-to-br from-navy-950 via-navy-900 to-primary-700 p-6 shadow-raised">
+          <p className="font-display text-xl font-bold text-white">
             Hello, {user?.firstName} 👋
           </p>
-          <p className="relative mt-1.5 text-sm text-white/80">
+          <p className="mt-1.5 text-sm text-white/80">
             Here's what's happening in your society right now.
           </p>
         </div>
@@ -157,26 +149,27 @@ export default function HomePage() {
                     const style = getRequestCategoryStyle(request.category);
                     return (
                       <Link key={request.id} to={`/requests/${request.id}`}>
-                        <Card className="p-4 flex gap-3 transition-all hover:shadow-raised hover:-translate-y-0.5">
-                          <IconTile icon={style.icon} color={style.color} size="sm" />
-                          <div className="flex-1">
-                            <div className="flex items-start justify-between gap-2">
-                              <p className="font-display font-semibold text-navy-950 leading-snug">
-                                {request.title}
-                              </p>
-                              <Badge
-                                status={request.urgency === 'urgent' ? 'urgent' : 'active'}
-                                className="shrink-0"
-                              >
-                                {URGENCY_SHORT_LABELS[request.urgency]}
-                              </Badge>
-                            </div>
-                            <p className="text-sm text-ink-secondary line-clamp-1">
+                        <Card className="p-4 flex gap-3.5 transition-shadow hover:shadow-raised">
+                          <IconTile icon={style.icon} color="neutral" size="sm" />
+                          <div className="min-w-0 flex-1">
+                            <p className="font-display font-semibold text-navy-950 leading-snug line-clamp-1">
+                              {request.title}
+                            </p>
+                            <p className="mt-0.5 text-sm text-ink-secondary line-clamp-1">
                               {request.description}
                             </p>
-                            <p className="mt-1 text-xs text-ink-tertiary">
-                              {request.first_name} {request.last_name}
-                            </p>
+                            <div className="mt-1.5 flex items-center justify-between gap-2">
+                              <p className="truncate text-xs text-ink-tertiary">
+                                {request.first_name} {request.last_name}
+                              </p>
+                              <span className="flex shrink-0 items-center gap-1.5 text-xs font-medium text-ink-secondary">
+                                <span
+                                  className={`h-1.5 w-1.5 rounded-full ${URGENCY_DOT[request.urgency]}`}
+                                  aria-hidden
+                                />
+                                {URGENCY_SHORT_LABELS[request.urgency]}
+                              </span>
+                            </div>
                           </div>
                         </Card>
                       </Link>

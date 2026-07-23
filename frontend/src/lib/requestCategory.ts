@@ -25,13 +25,20 @@ export function getRequestCategoryStyle(category: string | null | undefined): Re
 }
 
 export const URGENCY_LABELS: Record<string, string> = {
-  normal: 'Low (Within 48h)',
-  high: 'Standard (Same day)',
-  urgent: 'High (ASAP)',
+  normal: 'Flexible (within 2 days)',
+  high: 'Today (same day)',
+  urgent: 'Urgent (right away)',
 };
 
 export const URGENCY_SHORT_LABELS: Record<string, string> = {
-  normal: 'Low',
-  high: 'Standard',
-  urgent: 'High',
+  normal: 'Flexible',
+  high: 'Today',
+  urgent: 'Urgent',
+};
+
+/* Minimal urgency indicator: a small dot next to the label, no pill */
+export const URGENCY_DOT: Record<string, string> = {
+  normal: 'bg-ink-tertiary/50',
+  high: 'bg-amber',
+  urgent: 'bg-danger',
 };

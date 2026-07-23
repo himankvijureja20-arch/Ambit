@@ -5,7 +5,7 @@ import { useAuthStore } from '../store/authStore';
 import AppLayout from '../layouts/AppLayout';
 import { Button, Card, Badge, Avatar, Textarea, SegmentedControl, TrustScoreBar } from '../components/ui';
 import { RequestDetail } from '../types';
-import { getRequestCategoryStyle, URGENCY_SHORT_LABELS } from '../lib/requestCategory';
+import { getRequestCategoryStyle, URGENCY_SHORT_LABELS, URGENCY_DOT } from '../lib/requestCategory';
 import { timeAgo } from '../lib/timeAgo';
 
 const statusOptions = [
@@ -112,18 +112,16 @@ export default function RequestDetailPage() {
         )}
 
         <Card
-          className={`p-5 space-y-4 border-l-4 ${
-            request.urgency === 'urgent'
-              ? 'border-l-danger'
-              : request.urgency === 'high'
-                ? 'border-l-amber'
-                : 'border-l-sky-500/50'
-          }`}
+          className="p-5 space-y-4"
         >
           <div className="flex items-center justify-between gap-3">
-            <Badge status={request.urgency === 'urgent' ? 'urgent' : 'active'}>
-              {URGENCY_SHORT_LABELS[request.urgency]} request
-            </Badge>
+            <span className="flex items-center gap-1.5 text-xs font-semibold text-ink-secondary">
+              <span
+                className={`h-1.5 w-1.5 rounded-full ${URGENCY_DOT[request.urgency]}`}
+                aria-hidden
+              />
+              {URGENCY_SHORT_LABELS[request.urgency]}
+            </span>
             <span className="text-xs text-ink-tertiary">Posted {timeAgo(request.created_at)}</span>
           </div>
 

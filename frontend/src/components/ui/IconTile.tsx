@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-type TileColor = 'sage' | 'amber' | 'info' | 'primary' | 'danger';
+type TileColor = 'sage' | 'amber' | 'info' | 'primary' | 'danger' | 'neutral';
 
 interface IconTileProps {
   icon: ReactNode;
@@ -14,6 +14,7 @@ const colorClasses: Record<TileColor, string> = {
   info: 'bg-info-bg',
   primary: 'bg-primary/10',
   danger: 'bg-danger-bg',
+  neutral: 'bg-ink/[0.04]',
 };
 
 const sizeClasses = {
